@@ -1,0 +1,342 @@
+:root {
+    --primary: #4a90e2;
+    --secondary: #7ed321;
+    --accent: #ff6b6b;
+    --dark: #333333;
+    --light: #f8f9fa;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: clip;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark);
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.hero {
+    background: linear-gradient(rgba(74, 144, 226, 0.8), rgba(126, 211, 33, 0.7)), url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+    padding: 12px 30px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #3a7bc8;
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background-color: var(--secondary);
+    border: none;
+    padding: 12px 30px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #6bbd1d;
+    transform: translateY(-2px);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    margin: 15px auto;
+}
+
+.service-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    margin-bottom: 30px;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.testimonial-author {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.form-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 30px;
+}
+
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 60px 0 30px;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    animation: pulse 2s infinite; /* Aplicamos la animación de pulso */
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    border-radius: 30px; /* Hacemos que se estire a una píldora */
+    width: auto; /* Permitimos que el ancho se ajuste al contenido */
+    padding: 0 20px; /* Añadimos padding horizontal */
+    animation: none; /* Detenemos la animación de pulso al pasar el ratón */
+}
+
+.whatsapp-float i {
+    color: white;
+    font-size: 1.8rem;
+}
+
+.whatsapp-text {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    margin-left: 10px;
+    display: none; /* Oculto por defecto */
+    white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+}
+
+.whatsapp-float:hover .whatsapp-text {
+    display: inline-block; /* Mostramos el texto al pasar el ratón */
+}
+
+.whatsapp-float:hover .whatsapp-icon {
+    font-size: 1.6rem; /* Opcional: reducimos un poco el ícono al mostrar el texto */
+}
+
+/* Definición de la animación de pulso */
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info i {
+    color: var(--primary);
+    margin-right: 10px;
+    width: 20px;
+}
+
+
+/* =========================================
+   Responsive Design Adjustments
+   ========================================= */
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .hero {
+        padding: 100px 0;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .hero {
+        padding: 80px 0;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .hero .btn:last-child {
+        margin-bottom: 0;
+    }
+    .hero .btn-lg {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    .service-card, .testimonial-card {
+        margin-bottom: 20px;
+    }
+    .form-container {
+        padding: 20px;
+    }
+    #contacto .col-md-6 {
+        margin-bottom: 30px;
+    }
+    footer {
+        text-align: center;
+    }
+
+    /* WhatsApp Button Mobile */
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+    .whatsapp-float i {
+        font-size: 1.5rem;
+    }
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+        width: 50px; /* Ensure it does not expand */
+        padding: 0;
+    }
+    .whatsapp-float:hover .whatsapp-text {
+        display: none; /* Hide text on mobile */
+    }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .form-container {
+        padding: 15px;
+    }
+    .input-group-text {
+        font-size: 0.875rem;
+    }
+}
