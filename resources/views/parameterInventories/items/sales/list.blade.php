@@ -4,8 +4,8 @@
             <thead>
                 <tr>
                     <th style="text-align: center; width: 5%">Venta</th>
+                    <th style="text-align: center; width: 5%">Código Venta</th>
                     <th style="text-align: center; width: 20%">Cliente</th>
-                    <th style="text-align: center;">Veterinario</th>
                     <th style="text-align: center; width: 10%">Fecha de Venta</th>
                     <th style="text-align: center; width: 30%">Detalles de la Venta</th>
                     <th style="text-align: center; width: 5%">Total</th>
@@ -19,19 +19,21 @@
                             <i class="voyager-eye"></i>
                         </a>
                     </td>
-                    <td style="vertical-align: middle;">
+                    <td style="text-align: center; vertical-align: middle;">
+                        {{ $sale->id }}
+                    </td>
+                    <td style="text-align: center; vertical-align: middle;">
                         @if ($sale->person)
                             {{ strtoupper($sale->person->first_name) }} {{ strtoupper($sale->person->paternal_surname) }}
                         @else
                             <span class="text-muted">Sin Cliente</span>
                         @endif
                     </td>
-                    <td style="vertical-align: middle;">
-                        {{ $sale->register->name ?? 'N/A' }}
-                    </td>
                     <td style="text-align: center; vertical-align: middle;">
-                        {{ \Carbon\Carbon::parse($sale->dateSale)->isoFormat('DD/MM/Y h:m a') }}<br>
-                        <small>{{ \Carbon\Carbon::parse($sale->dateSale)->diffForHumans() }}</small>
+
+                        <i class="fa-solid fa-user"></i> <small>{{\Illuminate\Support\Str::words($sale->register->name, 2, '')}}</small> <br>
+                        <b style="font-size: 12px">{{date('d/m/Y h:m:s a', strtotime($sale->created_at))}}</b> <br>
+                        <small>{{\Carbon\Carbon::parse($sale->created_at)->diffForHumans()}}</small>
                     </td>
                     <td>
                         <table class="table table-sm" style="margin-bottom: 0px;">

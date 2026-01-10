@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            {{-- <div class="col-md-3 col-sm-6">
                 <div class="panel panel-bordered dashboard-kpi">
                     <div class="panel-body">
                         <div class="kpi-icon">
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-bordered dashboard-kpi">
                     <div class="panel-body">
