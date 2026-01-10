@@ -38,6 +38,7 @@
                         @endif                        
                     </td>
                     <td style="text-align: center; vertical-align: middle;">
+                        
                         @php
                             $paymentQr = $item->saleTransactions->where('paymentType', 'Qr')->sum('amount') > 0;
                             $paymentEfectivo = $item->saleTransactions->where('paymentType', 'Efectivo')->sum('amount') > 0;
@@ -92,6 +93,10 @@
                         {{-- <a onclick="handlePrintClick(this,'{{ setting('print.typePrint') }}', '{{ setting('print.url') }}', '{{ setting('print.ip') }}', '{{ setting('print.port') }}', '{{ setting('admin.print') }}', '{{ setting('admin.title') }}', {{ json_encode($item) }}, '{{ url('admin/sales/ticket') }}')"  title="Imprimiendo..." class="btn btn-sm btn-dark print-btn">
                             <i class="fa-solid fa-print"></i>
                         </a> --}}
+
+                        <a onclick="handlePrintClick(this,'{{ setting('print.typePrint') }}', '{{ setting('print.url') }}', '{{ setting('print.ip') }}', '{{ setting('print.port') }}', '{{ setting('print.thermalPrinter') }}', '{{ setting('admin.title') }}', {{ json_encode($item) }}, '{{ url('admin/sales/ticket') }}')"  title="Imprimiendo..." class="btn btn-sm btn-dark print-btn">
+                            <i class="fa-solid fa-print"></i>
+                        </a>
                         
                         @if ($item->status == 'Pendiente')
                             <a onclick="successItem('{{ route('sales-status.success', ['id' => $item->id]) }}')" data-toggle="modal" data-target="#success-modal" title="Entregar Pedido" class="btn btn-sm btn-success">
@@ -148,6 +153,8 @@
 
 <script>
     async function handlePrintClick(element, typePrint, url, ip, port, print, title, sale, fallbackUrl) {
+        // alert(url);
+
         const button = $(element);
         const icon = button.find('i');
         const originalIconClass = icon.attr('class');
@@ -162,6 +169,7 @@
         icon.removeClass(originalIconClass).addClass('fa-solid fa-spinner fa-spin');
 
         try {
+            // alert(111)
             await printTicket(typePrint, url, ip, port, print, title, sale, fallbackUrl);
         } finally {
             // Restaurar el botón después de un par de segundos para que el usuario vea el resultado (toastr)

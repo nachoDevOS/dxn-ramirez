@@ -393,6 +393,23 @@ class SettingsTableSeeder extends Seeder
                 'order' => 28,
                 'group' => 'Print',
             ),
+            34 => 
+            array (
+                'id' => 38,
+                'key' => 'print.thermalPrinter',
+                'display_name' => 'Impresión',
+                'value' => 'ticket',
+                'details' => '{
+"options": {
+"ticket": "Ticket",
+"command": "Comanda",
+"ticketCommand": "Ticket y Comanda"
+}
+}',
+                'type' => 'select_dropdown',
+                'order' => 29,
+                'group' => 'Print',
+            ),
         ));
         
         

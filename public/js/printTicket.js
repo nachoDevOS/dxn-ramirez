@@ -21,7 +21,7 @@ async function printTicket(typePrint, url, ip, port, print, title, sale, fallbac
             const quantity = parseFloat(item.quantity);
             return {
                 quantity: quantity % 1 === 0 ? parseInt(quantity) : quantity,
-                product: item.item_sale.name,
+                product: item.item_stock.item.name,
                 total: parseFloat(item.amount)
             };
         });
@@ -33,7 +33,7 @@ async function printTicket(typePrint, url, ip, port, print, title, sale, fallbac
             template: print,
             title: title,
             sale_number: sale.ticket,
-            sale_type: sale.typeSale,
+            sale_type: sale.id,
             details: details,
             observation: sale.observation,
             date: sale.created_at,

@@ -132,6 +132,11 @@ class SaleController extends Controller
                 ->route('sales.create')
                 ->with(['message' => 'Monto Incorrecto.', 'alert-type' => 'error']);
         }
+        if($request->amountTotalSale == 0)
+        {
+            return redirect()
+                ->route('sales.create')->with(['message' => 'Ingrese una cantidad de producto valido.', 'alert-type' => 'error']);
+        }
 
         $cashier = $this->cashier(null,'user_id = "'.Auth::user()->id.'"', 'status = "Abierta"');
         if (!$cashier) {
@@ -309,15 +314,21 @@ class SaleController extends Controller
                 }
             }
 
-            
-
-            
+            $sale = Sale::with([
+                    'person',
+                    'register',
+                    'saleDetails' => function ($q) {
+                        $q->where('deleted_at', null)->with(['itemStock.item']);
+                    },
+                ])
+                ->where('id', $sale->id)
+                ->first();
             // =================================================================================
 
             DB::commit();
             return redirect()
                 ->route('sales.index')
-                ->with(['message' => 'Registrado exitosamente.', 'alert-type' => 'success']);
+                ->with(['message' => 'Registrado exitosamente.', 'alert-type' => 'success', 'sale' => $sale]);
         } catch (\Throwable $e) {
             DB::rollBack();
             return 0;

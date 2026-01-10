@@ -62,7 +62,7 @@
             </div>
             <div class="col-md-12 text-right">
                 <button onclick="javascript:$('#popup-button').fadeOut('fast')" class="btn btn-default">Cerrar</button>
-                <a id="btn-print" onclick="printTicket('{{ setting('print.typePrint') }}', '{{ setting('print.url') }}', '{{ setting('print.ip') }}', '{{ setting('print.port') }}', '{{ setting('admin.thermalPrinter') }}', '{{ setting('admin.title') }}', {{ json_encode(session('sale')) }}, '{{ url('admin/sales/ticket') }}')" title="Imprimir" class="btn btn-danger">Imprimir <i
+                <a id="btn-print" onclick="printTicket('{{ setting('print.typePrint') }}', '{{ setting('print.url') }}', '{{ setting('print.ip') }}', '{{ setting('print.port') }}', '{{ setting('print.thermalPrinter') }}', '{{ setting('admin.title') }}', {{ json_encode(session('sale')) }}, '{{ url('admin/sales/ticket') }}')" title="Imprimir" class="btn btn-danger">Imprimir <i
                         class="glyphicon glyphicon-print"></i></a>
             </div>
         </div>
@@ -141,7 +141,7 @@
 
 
             @if (session('sale'))
-                printTicket('{{ setting('print.typePrint') }}', '{{ setting('print.url') }}', '{{ setting('print.ip') }}', '{{ setting('print.port') }}', '{{ setting('admin.thermalPrinter') }}', '{{ setting('admin.title') }}', @json(json_decode(session('sale'), true)), '{{ url('admin/sales/ticket') }}');
+                printTicket('{{ setting('print.typePrint') }}', '{{ setting('print.url') }}', '{{ setting('print.ip') }}', '{{ setting('print.port') }}', '{{ setting('print.thermalPrinter') }}', '{{ setting('admin.title') }}', @json(json_decode(session('sale'), true)), '{{ url('admin/sales/ticket') }}');
             @endif
 
 
