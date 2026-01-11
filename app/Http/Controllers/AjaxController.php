@@ -63,7 +63,8 @@ class AjaxController extends Controller
             ->Where(function($query) use ($search){
                 if($search){
                     $query->whereHas('item', function($query) use($search){
-                        $query->whereRaw($search ? 'name like "%'.$search.'%"' : 1);
+                        $query->whereRaw($search ? 'name like "%'.$search.'%"' : 1)
+                            ->OrWhereRaw($search ? "observation like '%$search%'" : 1);
                             // ->orWhereRaw($search ? 'nameTrade like "%'.$search.'%"' : 1);
                     })
                     // ->OrwhereHas('item.brand', function($query) use($search){
