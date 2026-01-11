@@ -117,7 +117,7 @@ class AjaxController extends Controller
         $data = Item::with(['brand', 'laboratory', 'category', 'presentation', 'fractionPresentation'])
             ->Where(function($query) use ($search){
                 if($search){
-                    $query->OrwhereHas('brand', function($query) use($search){
+                    $query->whereHas('brand', function($query) use($search){
                         $query->whereRaw($search ? 'name like "%'.$search.'%"' : 1);
                     })
                     ->OrwhereHas('category', function($query) use($search){
@@ -128,7 +128,8 @@ class AjaxController extends Controller
                     })
                     ->OrWhereRaw($search ? "id like '%$search%'" : 1)
                     // ->OrWhereRaw($search ? "nameGeneric like '%$search%'" : 1)
-                    ->OrWhereRaw($search ? "name like '%$search%'" : 1);
+                    ->OrWhereRaw($search ? "name like '%$search%'" : 1)
+                    ->OrWhereRaw($search ? "observation like '%$search%'" : 1);
                 }
             })
             ->where('deleted_at', null)
