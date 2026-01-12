@@ -45,5 +45,9 @@ class SaleDetail extends Model
     {
         return $this->belongsTo(ItemStockFraction::class,'itemStockFraction_id');
     }
+    public function presentation()
+    {
+        return $this->belongsTo(Presentation::class,'presentation_id');
+    }
 }
 

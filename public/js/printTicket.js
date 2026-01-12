@@ -21,6 +21,7 @@ async function printTicket(typePrint, url, ip, port, print, title, sale, fallbac
             const quantity = parseFloat(item.quantity);
             return {
                 quantity: quantity % 1 === 0 ? parseInt(quantity) : quantity,
+                presentation: item.presentation.name,
                 product: item.item_stock.item.name,
                 total: parseFloat(item.amount)
             };

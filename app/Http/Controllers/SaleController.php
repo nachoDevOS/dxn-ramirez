@@ -43,6 +43,9 @@ class SaleController extends Controller
             'saleDetails' => function ($q) {
                 $q->where('deleted_at', null);
             },
+            'saleDetails.presentation' => function ($q) {
+                $q->where('deleted_at', null);
+            },
             'saleDetails.itemStock.item',
             'saleTransactions' => function ($q) {
                 $q->where('deleted_at', null);
@@ -524,7 +527,7 @@ class SaleController extends Controller
                     'person',
                     'register',
                     'saleDetails' => function ($q) {
-                        $q->where('deleted_at', null)->with(['itemSale']);
+                        $q->where('deleted_at', null)->with(['itemSale.presentation']);
                     },
                 ])
                 ->where('id', $sale->id)
