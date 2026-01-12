@@ -20,6 +20,7 @@ class SaleDetail extends Model
         'dispensed', // Entero, Fraccionado
     
         'pricePurchase',
+        'presentation_id',
         'price',
         'quantity',
         'amount',

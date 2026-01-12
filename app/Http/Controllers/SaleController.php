@@ -253,7 +253,9 @@ class SaleController extends Controller
                 if ($quantity_unit == 0 && $quantity_fraction == 0) {
                     continue;
                 }
-                $itemStock = ItemStock::findOrFail($value['id']);
+                $itemStock = ItemStock::with(['item.presentation', 'itemStockFractions'])
+                        ->where('id', $value['id'])
+                        ->first();
 
                 // Lógica para venta de unidades enteras
                 if ($quantity_unit > 0) {
@@ -262,6 +264,7 @@ class SaleController extends Controller
                         'itemStock_id' => $itemStock->id,
                         'dispensed' => 'Entero',
                         'pricePurchase' => $itemStock->pricePurchase,
+                        'presentation_id' => $itemStock->item->presentation_id,
                         'price' => $value['price_unit'],
                         'quantity' => $quantity_unit,
                         'amount' => $value['price_unit'] * $quantity_unit,
@@ -306,6 +309,7 @@ class SaleController extends Controller
                         'itemStock_id' => $itemStock->id,
                         'itemStockFraction_id' => $itemStockFraction->id,
                         'dispensed' => 'Fraccionado',
+                        'presentation_id' => $itemStock->item->fractionPresentation_id,
                         'pricePurchase' => $itemStock->pricePurchase,
                         'price' => $value['price_fraction'],
                         'quantity' => $quantity_fraction,
@@ -430,7 +434,9 @@ class SaleController extends Controller
                     continue;
                 }
 
-                $itemStock = ItemStock::findOrFail($value['id']);
+                $itemStock = ItemStock::with(['item.presentation', 'itemStockFractions'])
+                        ->where('id', $value['id'])
+                        ->first();
 
                 // Venta de Unidades
                 if ($quantity_unit > 0) {
@@ -438,6 +444,7 @@ class SaleController extends Controller
                         'sale_id' => $sale->id,
                         'itemStock_id' => $itemStock->id,
                         'dispensed' => 'Entero',
+                        'presentation_id' => $itemStock->item->presentation_id,
                         'pricePurchase' => $itemStock->pricePurchase,
                         'price' => $value['price_unit'],
                         'quantity' => $quantity_unit,
@@ -514,12 +521,12 @@ class SaleController extends Controller
 
 
             $sale = Sale::with([
-                'person',
-                'register',
-                'saleDetails' => function ($q) {
-                    $q->where('deleted_at', null)->with(['itemSale']);
-                },
-            ])
+                    'person',
+                    'register',
+                    'saleDetails' => function ($q) {
+                        $q->where('deleted_at', null)->with(['itemSale']);
+                    },
+                ])
                 ->where('id', $sale->id)
                 ->first();
             DB::commit();
