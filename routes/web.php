@@ -41,6 +41,10 @@ Route::get('/', function () {
     return redirect('admin/login');
 })->name('login');
 
+Route::get('/hola', function () {
+    return response()->json(['mensaje' => '¡Hola! Bienvenido al sistema.']);
+})->name('hola');
+
 // Route::get('/', [HomeController::class, 'index']);
 // Route::post('/appointment', [HomeController::class, 'storeAppointment'])->name('appointment.store');
 // // Ruta para obtener las razas de un animal vía AJAX
